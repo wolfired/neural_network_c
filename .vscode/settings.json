@@ -35,6 +35,7 @@
     "iterator": "c",
     "xmemory": "c",
     "xutility": "c",
-    "assert.h": "c"
+    "assert.h": "c",
+    "chrono": "c"
   }
 }

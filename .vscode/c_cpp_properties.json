@@ -33,6 +33,16 @@
             "compilerArgs": ["/utf-8"],
             "intelliSenseMode": "msvc-x64",
             "windowsSdkVersion": "10.0.22621.0"
+        },
+        {
+            "name": "Linux64",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "cStandard": "c23",
+            "cppStandard": "c++23",
+            "compilerPath": "/usr/bin/gcc",
+            "intelliSenseMode": "gcc-x64"
         }
     ],
     "version": 4
