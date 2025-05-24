@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "cl /I.\\src /Zi /MT /D_DEBUG /DUNICODE /D_UNICODE /utf-8 .\\src\\main.c .\\src\\matrix.c",
+            "options": {
+                "shell": {
+                    "executable": "D:\\Microsoft\\VisualStudio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvarsall.bat",
+                    "args": ["x86", "&&"],
+                }
+            },
+            "problemMatcher": [
+                "$msvc"
+            ]
+        }
+    ]
+}

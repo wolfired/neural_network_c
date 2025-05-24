@@ -1,0 +1,40 @@
+{
+  "terminal.integrated.profiles.windows": {
+    "VS 2022": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [
+        "/k",
+        "D:\\Microsoft\\VisualStudio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvarsall.bat",
+        "x86"
+      ],
+      "icon": "terminal-cmd"
+    }
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/*.ilk": true,
+    "**/*.pdb": true,
+    "**/*.exp": true,
+    "**/*.obj": true
+  },
+  "files.associations": {
+    "stdio.h": "c",
+    "windows.h": "c",
+    "iostream": "cpp",
+    "cstdlib": "c",
+    "xlocinfo": "c",
+    "matrix.h": "c",
+    "stdlib.h": "c",
+    "iterator": "c",
+    "xmemory": "c",
+    "xutility": "c",
+    "assert.h": "c"
+  }
+}
