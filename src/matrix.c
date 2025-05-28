@@ -27,7 +27,7 @@ void matrix_del(Matrix** ins) {
     *ins = NULL;
 }
 
-void matrix_ctor(Matrix* thiz, size_t row, size_t col, float* raw) {
+void matrix_ctor(Matrix* const thiz, size_t row, size_t col, float* raw) {
     assert(NULL != thiz);
     if(NULL == thiz) { return; }
 
@@ -37,7 +37,7 @@ void matrix_ctor(Matrix* thiz, size_t row, size_t col, float* raw) {
     thiz->raw = raw;
 }
 
-void matrix_dtor(Matrix* thiz) {
+void matrix_dtor(Matrix* const thiz) {
     if(NULL == thiz) { return; }
 
     if(NULL != thiz->raw) {
@@ -46,7 +46,7 @@ void matrix_dtor(Matrix* thiz) {
     }
 }
 
-void matrix_add(Matrix* lhs, Matrix* rhs, Matrix** ins) {
+void matrix_add(Matrix const* const lhs, Matrix const* const rhs, Matrix** ins) {
     assert(NULL != lhs && NULL != rhs);
     if(NULL == lhs || NULL == rhs) { return; }
 
@@ -59,7 +59,12 @@ void matrix_add(Matrix* lhs, Matrix* rhs, Matrix** ins) {
     assert(NULL != ins);
     if(NULL == ins) { return; }
 
-    if(NULL == *ins) { matrix_new(ins, lhs->row, lhs->col, NULL); }
+    if(NULL == *ins) {
+        matrix_new(ins, lhs->row, lhs->col, NULL);
+    } else {
+        assert(lhs->row == (*ins)->row && lhs->col == (*ins)->col);
+        if(lhs->row != (*ins)->row || lhs->col != (*ins)->col) { return; }
+    }
 
     size_t count = lhs->row * lhs->col;
 
@@ -83,7 +88,12 @@ void matrix_sub(Matrix* lhs, Matrix* rhs, Matrix** ins) {
     assert(NULL != ins);
     if(NULL == ins) { return; }
 
-    if(NULL == *ins) { matrix_new(ins, lhs->row, lhs->col, NULL); }
+    if(NULL == *ins) {
+        matrix_new(ins, lhs->row, lhs->col, NULL);
+    } else {
+        assert(lhs->row == (*ins)->row && lhs->col == (*ins)->col);
+        if(lhs->row != (*ins)->row || lhs->col != (*ins)->col) { return; }
+    }
 
     size_t count = lhs->row * lhs->col;
 
@@ -107,7 +117,12 @@ void matrix_mul(Matrix* lhs, Matrix* rhs, Matrix** ins) {
     assert(NULL != ins);
     if(NULL == ins) { return; }
 
-    if(NULL == *ins) { matrix_new(ins, lhs->row, rhs->col, NULL); }
+    if(NULL == *ins) {
+        matrix_new(ins, lhs->row, rhs->col, NULL);
+    } else {
+        assert(lhs->row == (*ins)->row && lhs->col == (*ins)->col);
+        if(lhs->row != (*ins)->row || lhs->col != (*ins)->col) { return; }
+    }
 
     for(size_t r = 0; r < lhs->row; ++r) {
         for(size_t c = 0; c < rhs->col; ++c) {
@@ -137,7 +152,12 @@ void matrix_mul_scalar(Matrix* lhs, float scalar, Matrix** ins) {
     assert(NULL != ins);
     if(NULL == ins) { return; }
 
-    if(NULL == *ins) { matrix_new(ins, lhs->row, lhs->col, NULL); }
+    if(NULL == *ins) {
+        matrix_new(ins, lhs->row, lhs->col, NULL);
+    } else {
+        assert(lhs->row == (*ins)->row && lhs->col == (*ins)->col);
+        if(lhs->row != (*ins)->row || lhs->col != (*ins)->col) { return; }
+    }
 
     size_t count = lhs->row * lhs->col;
 
@@ -158,7 +178,12 @@ void matrix_transpose(Matrix* thiz, Matrix** ins) {
     assert(NULL != ins);
     if(NULL == ins) { return; }
 
-    if(NULL == *ins) { matrix_new(ins, thiz->col, thiz->row, NULL); }
+    if(NULL == *ins) {
+        matrix_new(ins, thiz->col, thiz->row, NULL);
+    } else {
+        assert(thiz->row == (*ins)->row && thiz->col == (*ins)->col);
+        if(thiz->row != (*ins)->row || thiz->col != (*ins)->col) { return; }
+    }
 
     for(size_t r = 0; r < thiz->row; ++r) {
         size_t rs = r * thiz->col;
@@ -208,7 +233,7 @@ void matrix_set_one(Matrix* thiz, size_t r, size_t c, float value) {
     thiz->raw[index] = value;
 }
 
-void matrix_print(Matrix* thiz) {
+void matrix_print(Matrix const* const thiz) {
     assert(NULL != thiz);
     if(NULL == thiz) { return; }
 
@@ -224,3 +249,12 @@ void matrix_print(Matrix* thiz) {
         printf("\n");
     }
 }
+
+// void matrix_view_new(MatrixView** ins, Matrix const* const* ins_mat) {
+//     *ins            = (MatrixView*)malloc(sizeof(MatrixView));
+//     (*ins)->ins_mat = ins_mat;
+// }
+
+// void matrix_view_del(MatrixView** ins) {
+//     if(NULL == ins) { return; }
+// }
