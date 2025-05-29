@@ -1,6 +1,8 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#include <stddef.h>
+
 typedef struct Matrix_ {
     size_t row;
     size_t col;
