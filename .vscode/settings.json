@@ -37,5 +37,12 @@
     "xutility": "c",
     "assert.h": "c",
     "chrono": "c"
-  }
+  },
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "C_Cpp.default.intelliSenseMode": "clang-x64",
+  "C_Cpp.default.cStandard": "c23",
+  "C_Cpp.default.cppStandard": "c++23",
+  "C_Cpp.default.compilerPath": "/usr/bin/clang",
+  "C_Cpp.default.includePath": ["${workspaceFolder}/**"],
+  "C_Cpp.default.compileCommands": []
 }
