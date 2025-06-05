@@ -9,7 +9,7 @@ target("matrix")
 target("bresenham")
     set_kind("static")
     add_includedirs("./src")
-    add_files("./src/bresenham.c")   
+    add_files("./src/bresenham.c")
 
 target("canvas")
     set_kind("binary")
