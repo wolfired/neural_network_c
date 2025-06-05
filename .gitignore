@@ -55,3 +55,7 @@ dkms.conf
 .gdb_history
 main
 vgcore.*
+/.xmake/
+/.vscode/compile_commands.json
+/.vscode/.cache/
+/build/
